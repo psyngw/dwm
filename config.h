@@ -9,10 +9,10 @@ static const unsigned int gappoh    = 10;       /* horiz outer gap between windo
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=10" };
-static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=10";
+static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=12" };
+static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -33,7 +33,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -85,43 +85,51 @@ static const char *voicetoggle[] = { "amixer", "set", "Master", "toggle", NULL }
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = flameshotcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = flameshotcmd } },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = voicedown } },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = voiceup } },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = voicetoggle } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
+	{ MODKEY,                       XK_i,      rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_i,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_r,      hidewin,        {0} },
 	{ MODKEY|ShiftMask,             XK_r,      restorewin,     {0} },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|Mod1Mask,              XK_h,      incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod1Mask,              XK_l,      incrgaps,       {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
-	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = trayercmd } },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_z,      spawn,          {.v = trayercmd } },
+	// { MODKEY,                       XK_space,  setlayout,      {0} },
+	// { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	// { MODKEY,                       XK_space,  setlayout,      {0} },
+	// { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	// { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	// { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	// { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	// { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	// { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	// { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
