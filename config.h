@@ -28,6 +28,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const unsigned int baralpha = 0xd0;
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -56,14 +57,17 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                            instance                    title               tags mask     isfloating   monitor */
-  { "Google-chrome",                 "google-chrome",      NULL,               1 << 1,       0,           -1 },
-	{ "Navicat",                       "navicat",                   NULL,               1 << 2,       0,           -1 },
-	{ "netease-cloud-music",            NULL,                       NULL,               1 << 4,       0,           -1 },
-	{ "Steam",                          NULL,                       NULL,               1 << 3,       0,           -1 },
-	{ "wechat",                         NULL,                       NULL,               1 << 6,       0,           -1 },
-	{ "qv2ray",                         NULL,                       NULL,               1 << 1,       0,           -1 },
-	{ "Alacritty",                      "Alacritty",                NULL,               1 << 0,       0,           -1 },
+	/* class                            instance                 title           tags mask    isfloating   isterminal    noswallow  monitor */
+  { "Google-chrome",                 "google-chrome",             NULL,               1 << 1,       0,    0,     -1,       -1 },
+	{ "navicat",                       "navicat",                   NULL,               1 << 2,       0,    0,     -1,       -1 },
+	{ "netease-cloud-music",            NULL,                       NULL,               1 << 4,       0,    0,     -1,       -1 },
+	{ "Steam",                          NULL,                       NULL,               1 << 3,       0,    0,     -1,       -1 },
+	{ "wechat",                         NULL,                       NULL,               1 << 6,       0,    0,     -1,       -1 },
+	{ "qv2ray",                         NULL,                       NULL,               1 << 1,       0,    0,     -1,       -1 },
+	{ "Alacritty",                      "Alacritty",                NULL,               1 << 0,       0,    1,      0,       -1 },
+  { "st-256color",                    "st-256color",              NULL,                    0,       0,    1,      0,       -1 },
+  { "feh",                             "feh",                     NULL,                    0,       0,    0,      0,       -1 },
+  { NULL,                             NULL,                     "Event Tester",                    0,       0,    0,      1,       -1 },
 };
 // static const Rule rules[] = {
 // 	/* xprop(1):
