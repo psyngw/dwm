@@ -15,6 +15,10 @@ static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]     = {"SauceCodePro Nerd Font Mono:size=12",
                                   "Sarasa UI SC:size=10:antialias=true:autohint=true",
                                   "JoyPixels:size=12:antialias=true:autohint=true"};
+static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
+static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
+static const char *alttrayname      = "tray";    /* Polybar tray instance name */
+static const char *altbarcmd        = "$HOME/bar.sh"; /* Alternate bar launch command */
 static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
 static char normbgcolor[]           = "#2E3440";
 static char normbordercolor[]       = "#3B4252";
