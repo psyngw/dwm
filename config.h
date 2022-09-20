@@ -71,6 +71,7 @@ static const Rule rules[] = {
 	{ "Alacritty",                      "Alacritty",                NULL,               1 << 0,       0,    1,      0,       -1 },
   { "st-256color",                    "st-256color",              NULL,                    0,       0,    1,      0,       -1 },
   { "feh",                             "feh",                     NULL,                    0,       0,    0,      0,       -1 },
+  { "Surf",                             "surf",                   NULL,                    0,       0,    0,      1,       -1 },
   { NULL,                             NULL,                     "Event Tester",                    0,       0,    0,      1,       -1 },
 };
 // static const Rule rules[] = {
@@ -120,9 +121,13 @@ static const char *trayercmd[] = { "/bin/bash", "/home/warren/scripts/tt.sh", NU
 static const char *mountcmd[] = { "/bin/bash", "/home/warren/scripts/wponedrive.sh", NULL };
 static const char *wpchangecmd[] = { "/bin/bash", "/home/warren/scripts/dwm/wp-change.sh", NULL };
 static const char *flameshotcmd[] = { "flameshot", "gui", NULL };
-static const char *voiceup[] = { "amixer", "set", "Master", "5%+", NULL };
-static const char *voicedown[] = { "amixer", "set", "Master", "5%-", NULL };
-static const char *voicetoggle[] = { "amixer", "set", "Master", "toggle", NULL };
+static const char *voiceup[] = { "/bin/bash", "/home/warren/scripts/dwm/wp-alsa-up.sh", NULL };
+static const char *voicedown[] = { "/bin/bash", "/home/warren/scripts/dwm/wp-alsa-down.sh", NULL };
+static const char *voicetoggle[] = { "/bin/bash", "/home/warren/scripts/dwm/wp-alsa-toggle.sh", NULL };
+// static const char *voiceup[] = { "amixer", "set", "Master", "5%+", NULL };
+// static const char *voicedown[] = { "amixer", "set", "Master", "5%-", NULL };
+// static const char *voicetoggle[] = { "amixer", "set", "Master", "toggle", NULL };
+static const char *shutdowndwm[] = { "killall", "xinit", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -185,6 +190,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask|Mod1Mask,             XK_q,      spawn,           { .v = shutdowndwm } },
 };
 
 /* button definitions */
