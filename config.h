@@ -12,14 +12,17 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 // static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=12" };
-static const char *fonts[]     = {"SauceCodePro Nerd Font Mono:size=12",
-                                  "Sarasa UI SC:size=10:antialias=true:autohint=true",
-                                  "JoyPixels:size=12:antialias=true:autohint=true"};
+// static const char *fonts[]     = {"SauceCodePro Nerd Font Mono:size=12",
+//                                   "Sarasa UI SC:size=10:antialias=true:autohint=true",
+//                                   "JoyPixels:size=12:antialias=true:autohint=true"};
 static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
 static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *alttrayname      = "tray";    /* Polybar tray instance name */
 static const char *altbarcmd        = "$HOME/scripts/dwm/bar.sh"; /* Alternate bar launch command */
-static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
+static const char *fonts[]     = {"Mplus1-Regular:size=12",
+                                  "WenQuanYi Micro Hei:size=12",
+                                  "JoyPixels:pixel=10:antialias=true:autohint=true"};
+static const char dmenufont[]       = "Mplus1-Regular:size=12";
 static char normbgcolor[]           = "#2E3440";
 static char normbordercolor[]       = "#3B4252";
 static char normfgcolor[]           = "#ECEFF4";
@@ -53,7 +56,8 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 // static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+// static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "🚲₁", "🌏₂", "🗄️₃", "💿₄", "🥤₅", "📺₆", "🧊₇", "㊙️₈", "☢️₉" };
 // static const char *tags[] = { "LocalShell", "Chrome", "Database", "Daily", "Daily", "Daily", "Buffer", "WeChat", "SSH" };
 
 static const Rule rules[] = {
